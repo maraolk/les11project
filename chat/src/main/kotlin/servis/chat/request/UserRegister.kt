@@ -1,4 +1,4 @@
-package servis.chat.dto
+package servis.chat.request
 
 data class UserRegister(
     val login : String,
