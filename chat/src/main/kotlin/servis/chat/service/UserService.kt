@@ -40,7 +40,7 @@ class UserService(
 
     fun getUsers(page: Int, size: Int, sortBy: String, token: String): ResponseEntity<List<Profile>> {
         if (userRepository.getUserByToken(token) == null) {
-            return ResponseEntity(listOf(), HttpStatus.NOT_FOUND)
+            return ResponseEntity(listOf(), HttpStatus.UNAUTHORIZED)
         }
         val profiles = userRepository.getProfile(page, size, sortBy)
         return ResponseEntity(profiles, HttpStatus.OK)

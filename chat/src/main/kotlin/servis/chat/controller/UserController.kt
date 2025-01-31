@@ -6,21 +6,21 @@ import servis.chat.request.ReactionRequest
 import servis.chat.request.UserRegister
 import servis.chat.service.UserService
 
-
+@RequestMapping("/users")
 @RestController
 class UserController (
     val userService: UserService
 ) {
 
-    @PostMapping("/users")
+    @PostMapping
     fun register(@RequestBody userRegister: UserRegister) = userService.register(userRegister)
 
-    @PutMapping("/users")
+    @PutMapping
     fun addInfo(@RequestBody form: Form, @RequestHeader("Authorization") token: String) = userService.addInfo(form, token)
 
     @GetMapping("/users")
-    fun getUsers(@PathVariable page: Int, @PathVariable size: Int, @PathVariable sortBy: String, @RequestHeader("Authorization") token: String) = userService.getUsers(page, size, sortBy, token)
+    fun getUsers(@RequestParam page: Int, @RequestParam size: Int, @RequestParam sortBy: String, @RequestHeader("Authorization") token: String) = userService.getUsers(page, size, sortBy, token)
 
-    @PostMapping("/users/{id}/reaction")
+    @PostMapping("/{id}/reaction")
     fun reactUser(@RequestBody reaction: ReactionRequest, @PathVariable id: Int, @RequestHeader("Authorization") token: String) = userService.react(reaction, id, token)
 }
