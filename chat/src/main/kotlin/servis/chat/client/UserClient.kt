@@ -2,10 +2,10 @@ package servis.chat.client
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import servis.chat.dto.Form
-import servis.chat.dto.UserRegister
 import servis.chat.response.FormResponse
 import servis.chat.response.UserResponse
+import servis.chat.request.Form
+import servis.chat.request.UserRegister
 import org.springframework.cloud.openfeign.FeignClient
 
 @FeignClient(name = "userClient", url = "http://localhost:8080/")
