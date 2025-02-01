@@ -21,7 +21,7 @@ class UserRepository(
         return userRepository.size-1
     }
     fun makeInfo(form: Form, token:String): Int {
-        var id = 52
+        var id = -1
         userRepository.forEach{
                 user ->
             if (user.token == token) {
